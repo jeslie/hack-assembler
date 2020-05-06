@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jcc.hack</groupId>
+    <artifactId>assembler</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Hack assembler project</name>
+    <description>Hack Assembler with a CLI and API</description>
+    <inceptionYear>2020</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jeslie Chermak</name>
+            <organization>JCC</organization>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>impl</module>
+        <module>main</module>
+    </modules>
+
+    <properties>
+        <java.version>11</java.version>
+
+        <asm.version>8.0.1</asm.version>
+        <assertj.version>3.15.0</assertj.version>
+        <checker.version>3.3.0</checker.version>
+        <compiler.version>3.8.1</compiler.version>
+        <dependency.version>3.1.2</dependency.version>
+        <findsecbugs.version>1.10.1</findsecbugs.version> <!-- includes Spotbugs -->
+        <hamcrest.version>2.2</hamcrest.version>
+        <jarfile.version>3.2.0</jarfile.version>
+        <javacc.version>7.0.6</javacc.version> <!-- 7.0.1+ for modules -->
+        <javadoc.version>3.2.0</javadoc.version>
+        <jlink.plugin.version>3.0.0-alpha-1</jlink.plugin.version>
+        <junit.version>4.13</junit.version>
+        <jxr.version>3.0.0</jxr.version>
+        <logback.version>1.3.0-alpha4</logback.version> <!-- 1.3+ for modules -->
+        <plexus.version>2.1.0</plexus.version> <!-- 2+ for  modules -->
+        <pmd.version>3.13.0</pmd.version>
+        <renderer.version>1.9.2</renderer.version>
+        <reports.version>3.0.0</reports.version>
+        <scm.version>1.11.2</scm.version>
+        <site.version>3.9.0</site.version>
+        <slf4j.version>1.8.0-beta4</slf4j.version> <!-- 1.8+ for modules -->
+        <spotbugs.version>4.0.2</spotbugs.version>
+        <spotbugs.plugin.version>4.0.0</spotbugs.plugin.version>
+        <surefire.version>3.0.0-M4</surefire.version>
+
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <scm>
+        <url>https://github.com/jeslie/hack-assembler</url>
+        <connection>scm:git:https://github.com/jeslie/hack-assembler</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <build>
+        <finalName>Assembler</finalName>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.version}</version>
+                <configuration>
+                    <release>${java.version}</release>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <showWarnings>true</showWarnings>
+                    <verbose>true</verbose>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.checkerframework</groupId>
+                            <artifactId>checker</artifactId>
+                            <version>${checker.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <annotationProcessors>
+                        <!-- Add all the checkers you want to enable here -->
+                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                    </annotationProcessors>
+                    <compilerArgs>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <targetJdk>${java.version}</targetJdk>
+                    <minimumPriority>1</minimumPriority>
+                 </configuration>
+                <executions>
+                    <execution>
+                        <id>pmd-check</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>pmd</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>cpd-check</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>cpd</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.plugin.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <onlyAnalyze>
+                        ${project.groupId}.${project.artifactId}.*
+                    </onlyAnalyze>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>${findsecbugs.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>spotbugs-check</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.version}</version>
+                <configuration>
+                    <show>public</show>
+                    <use>true</use>
+                    <doclint>all</doclint>
+                    <links>
+                        <!-- pre-module (Java 9-) use:
+                        <link>https://docs.oracle.com/javase/9/docs/api/</link>
+                         -->
+                        <!-- post-module (Java 10+) use: -->
+                        <link>https://docs.oracle.com/en/java/javase/${java.version}/docs/api/</link>
+                        <link>http://www.slf4j.org/apidocs/</link>
+                    </links>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--
+                -->
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${reports.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>${scm.version}</version>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${jxr.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <dependencies>
+        <!--
+            SLF4J
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- replace SLF4J Simple logger with Logback classic logger
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        -->
+        <!--
+            Logback
+        -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId> <!-- note: this will include slf4j-api -->
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!--
+             Findbugs/Spotbugs + OWASP
+        -->
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>${spotbugs.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.h3xstream.findsecbugs</groupId>
+            <artifactId>findsecbugs-plugin</artifactId>
+            <version>${findsecbugs.version}</version>
+        </dependency>
+        <!--
+            Checker Framework
+        -->
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <version>${checker.version}</version>
+        </dependency>
+        <!--
+            Dependency checks
+        -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>${dependency.version}</version>
+        </dependency>
+        <!--
+            JARs
+        -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>${jarfile.version}</version>
+        </dependency>
+        <!--
+            PMD
+        -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>${pmd.version}</version>
+        </dependency>
+        <!--
+            JUnit + Hamcrest + AssertJ
+        -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--
+            SCM
+        -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-plugin</artifactId>
+            <version>${scm.version}</version>
+        </dependency>
+        <!--
+            Java module linker
+        -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jlink-plugin</artifactId>
+            <version>${jlink.plugin.version}</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <!--
+            Plexus IoC container
+        -->
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-container-default</artifactId>
+            <version>${plexus.version}</version>
+        </dependency>
+        <!--
+             Reports
+         -->
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-site-renderer</artifactId>
+            <version>${renderer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jxr-plugin</artifactId>
+            <version>${jxr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <version>${reports.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefire.version}</version>
+        </dependency>
+        <!--
+            Java Compiler Compiler
+        -->
+        <dependency>
+            <groupId>net.java.dev.javacc</groupId>
+            <artifactId>javacc</artifactId>
+            <version>${javacc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>${asm.version}</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>ch.qos.logback</id> <!-- covers SLF4J API, so no separate repository needed -->
+            <name>Logback logging framework</name>
+            <url>https://mvnrepository.com/artifact/ch.qos.logback</url>
+        </repository>
+        <repository>
+            <id>com.h3xstream.findsecbugs</id>
+            <name>OWASP Security Bugs frameworks</name>
+            <url>https://mvnrepository.com/artifact/com.h3xstream.findsecbugs</url>
+        </repository>
+        <repository>
+            <id>com.google.code</id>
+            <name>Google frameworks</name>
+            <url>https://mvnrepository.com/artifact/com.google.code</url>
+        </repository>
+        <repository>
+            <id>org.apache.maven.doxia</id>
+            <name>Doxia library</name>
+            <url>https://mvnrepository.com/artifact/org.apache.maven.doxia</url>
+        </repository>
+        <repository>
+            <id>org.assertj</id>
+            <name>AssertJ testing framework</name>
+            <url>https://mvnrepository.com/artifact/org.assertj</url>
+        </repository>
+        <repository>
+            <id>org.checkerframework</id>
+            <name>Checker framework</name>
+            <url>https://mvnrepository.com/artifact/org.checkerframework</url>
+        </repository>
+        <repository>
+            <id>org.codehaus.plexus</id>
+            <name>JavaCC tool</name>
+            <url>https://mvnrepository.com/artifact/org.codehaus.plexus</url>
+        </repository>
+        <repository>
+            <id>org.hamcrest</id>
+            <name>Hamcrest library</name>
+            <url>https://mvnrepository.com/artifact/org.hamcrest</url>
+        </repository>
+        <repository>
+            <id>net.java.dev.javacc</id>
+            <name>JavaCC tool</name>
+            <url>https://mvnrepository.com/artifact/net.java.dev.javacc</url>
+        </repository>
+        <!--
+             <repository>
+                 <id>org.slf4j</id>
+                 <name>SLF4J logging framework</name>
+                 <url>https://mvnrepository.com/artifact/org.slf4j</url>
+             </repository>
+        -->
+    </repositories>
+
+</project>

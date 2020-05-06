@@ -1,0 +1,55 @@
+// no spaces
+A=M;JGE
+
+// 1 space
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A = M;JGE
+A = M ;JGE
+A = M; JGE
+A = M ; JGE
+A= M;JGE
+A =M; JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A =M;JGE
+A= M;JGE
+A=M ;JGE
+A=M; JGE
+
+ A=M;JGE
+ A=M;JGE
+A =M;JGE
+A= M;JGE
+A=M ;JGE
+A=M; JGE
+
+ A =M;JGE
+ A =M;JGE
+A = M;JGE
+A= M ;JGE
+A=M ; JGE
+A=M; JGE
+A=M;JGE
+ A=M;JGE
+A =M;JGE
+A= M;JGE
+A=M ;JGE
+A=M; JGE
+A=M;JGE
+ A=M;JGE
+A =M;JGE
+A= M;JGE
+A=M ;JGE
+A=M; JGE
+A=M;JGE
+A=M;JGE
