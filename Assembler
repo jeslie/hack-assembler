@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar main/target/assembler-cli-jar-with-dependencies.jar $*
