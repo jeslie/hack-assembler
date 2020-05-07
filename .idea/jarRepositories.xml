@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="ch.qos.logback" />
+      <option name="name" value="Logback logging framework" />
+      <option name="url" value="https://mvnrepository.com/artifact/ch.qos.logback" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.apache.maven.doxia" />
+      <option name="name" value="Doxia library" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.apache.maven.doxia" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="net.java.dev.javacc" />
+      <option name="name" value="JavaCC tool" />
+      <option name="url" value="https://mvnrepository.com/artifact/net.java.dev.javacc" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.jetbrains" />
+      <option name="name" value="JetBrains annotations" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.jetbrains/annotations" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="com.google.code" />
+      <option name="name" value="Google frameworks" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.google.code" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="com.google" />
+      <option name="name" value="Findbugs/JSR305 annotations" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.google.code.findbugs" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.checkerframework" />
+      <option name="name" value="Checker framework" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.checkerframework" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.codehaus.plexus" />
+      <option name="name" value="JavaCC tool" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.codehaus.plexus" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="ch.qos.logback" />
+      <option name="name" value="LogBack logging framework" />
+      <option name="url" value="https://mvnrepository.com/artifact/ch.qos.logback" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.hamcrest" />
+      <option name="name" value="Hamcrest library" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.hamcrest" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.slf4j" />
+      <option name="name" value="SLF4J logging framework" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.slf4j" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="com.h3xstream.findsecbugs" />
+      <option name="name" value="OWASP Security Bugs frameworks" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.h3xstream.findsecbugs" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="oss.sonatype.org" />
+      <option name="name" value="oss.sonatype.org" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.assertj" />
+      <option name="name" value="AssertJ testing framework" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.assertj" />
+    </remote-repository>
+  </component>
+</project>

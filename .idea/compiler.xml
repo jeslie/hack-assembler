@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for Hack assembler project" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processor name="org.checkerframework.checker.nullness.NullnessChecker" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/checkerframework/checker/3.3.0/checker-3.3.0.jar" />
+        </processorPath>
+        <module name="impl" />
+        <module name="main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="com.jcc.hack.assembler" target="11" />
+      <module name="hack.assembler.api" target="11" />
+      <module name="hack.assembler.cli" target="11" />
+      <module name="hack.assembler.exceptions" target="11" />
+      <module name="hack.assembler.impl" target="11" />
+      <module name="impl" target="11" />
+      <module name="main" target="11" />
+      <module name="main (1)" target="9" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com.jcc.hack.assembler" options="" />
+      <module name="hack.assembler.api" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="hack.assembler.cli" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="hack.assembler.exceptions" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="hack.assembler.impl" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="impl" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="main" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="main (1)" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+    </option>
+  </component>
+</project>
