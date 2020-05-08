@@ -11,14 +11,35 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <name>Hack assembler API</name>
+    <description>Hack Assembler support for an API</description>
+
     <artifactId>assembler.impl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Hack assembler API</name>
-    <description>Hack Assembler support for an API</description>
-    <inceptionYear>2020</inceptionYear>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>assembler-api</finalName>
     </build>

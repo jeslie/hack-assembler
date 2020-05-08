@@ -9,8 +9,6 @@
 # maven generated files
 target
 
-# run mvn under Java 11 and filter output
-/fmvn
 ################### ################### ################### ###################
 # from https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 #

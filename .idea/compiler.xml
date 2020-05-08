@@ -32,8 +32,8 @@
       <module name="hack.assembler.cli" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
       <module name="hack.assembler.exceptions" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
       <module name="hack.assembler.impl" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
-      <module name="impl" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
-      <module name="main" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
+      <module name="impl" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED -Xpkginfo:always" />
+      <module name="main" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED -Xpkginfo:always" />
       <module name="main (1)" options="-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
     </option>
   </component>
