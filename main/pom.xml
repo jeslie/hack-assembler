@@ -17,6 +17,9 @@
     <artifactId>assembler.main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <!--
+    <packaging>jlink</packaging>
+    -->
 
     <dependencies>
         <dependency>
