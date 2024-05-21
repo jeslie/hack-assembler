@@ -47,7 +47,7 @@
         <javacc.version>7.0.6</javacc.version> <!-- 7.0.1+ for modules -->
         <javadoc.version>3.2.0</javadoc.version>
         <jlink.plugin.version>3.0.0-alpha-1</jlink.plugin.version>
-        <junit.version>4.13</junit.version>
+        <junit.version>4.13.1</junit.version>
         <jxr.version>3.0.0</jxr.version>
         <logback.version>1.3.0-alpha4</logback.version> <!-- 1.3+ for modules -->
         <plexus.version>2.1.0</plexus.version> <!-- 2+ for  modules -->
